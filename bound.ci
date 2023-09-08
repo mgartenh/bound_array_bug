@@ -1,0 +1,16 @@
+mainmodule bound {
+    readonly CProxy_Bound boundProxy;
+    readonly CProxy_A aProxy;
+    readonly CProxy_B bProxy;
+    mainchare Bound {
+        entry Bound(CkArgMsg *m);
+    };
+
+    array [1D]  A { 
+        entry A();
+    };
+
+    array [1D]  B { 
+        entry B();
+    };
+};
