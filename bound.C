@@ -21,6 +21,7 @@ class Bound : public CBase_Bound {
 class A: public CBase_A {
     public:
         A() {
+            bProxy[thisIndex].ckLocal();
         };
 };
 
