@@ -8,6 +8,7 @@ mainmodule bound {
 
     array [1D]  A { 
         entry A();
+        entry void aMethod();
     };
 
     array [1D]  B { 
