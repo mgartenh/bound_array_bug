@@ -15,25 +15,35 @@ class Bound : public CBase_Bound {
             CkArrayOptions opts(2);
             opts.bindTo(aProxy);
             bProxy=CProxy_B::ckNew(opts);
-        }
+	    //aProxy.aMethod();
+	}
 };
 
 class A: public CBase_A {
     public:
         A() {
-            // bProxy[thisIndex].ckLocal();
-        };
+            //bProxy[thisIndex].ckLocal();
+            if(thisIndex==1) migrateMe(0);
+	    else migrateMe(0);
+	};
         void aMethod() {
-            BProxy[thisIndex].ckLocal();
-        }
+	    //if(thisIndex==1) migrateMe(0);
+	    //else migrateMe(0);
+	    //if(thisIndex==0)
+	    //B* ptr = bProxy[thisIndex].ckLocal();
+	    if(thisIndex==0) B* ptr = bProxy[1].ckLocal();
+	    else B* ptr = bProxy[0].ckLocal();
+	}
+	A(CkMigrateMessage *m){}
 };
 
 class B: public CBase_B {
     public:
         B() {
-            AProxy[thisIndex].ckLocal() -> aMethod();
-            migrateMe();
-        };
+            aProxy[thisIndex].ckLocal() -> aMethod();
+	    //A* ptr = aProxy[thisIndex].ckLocal();
+	};
+	B(CkMigrateMessage *m) {}
 };
 
 
